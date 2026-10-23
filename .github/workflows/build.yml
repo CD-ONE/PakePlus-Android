@@ -22,7 +22,7 @@ jobs:
                   cache: gradle
 
             - name: Set up Android SDK
-              uses: android-actions/setup-android@v3
+              uses: android-actions/setup-android@v4
               with:
                   packages: 'platform-tools'
             - uses: pnpm/action-setup@v3
@@ -34,7 +34,8 @@ jobs:
               with:
                   node-version: 20
                   cache: pnpm
-
+            - name: Approve build scripts
+              run: pnpm approve-builds --all
             - name: Init Project Config
               run: |
                   pnpm install
