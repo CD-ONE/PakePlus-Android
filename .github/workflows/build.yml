@@ -21,9 +21,9 @@ jobs:
           cache: gradle
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v4
+        uses: premex-ab/setup-android-cli@v1
         with:
-          packages: 'platform-tools'
+          packages: 'platform-tools'   # 斜杠语法；多个包用空格或换行分隔
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -53,7 +53,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --no-daemon
 
       - name: Rename APK file
         run: |
